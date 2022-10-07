@@ -16,7 +16,7 @@
         android:id="@+id/layout_header_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,12 +94,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/videoTimeContainer"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="30dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +110,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:minWidth="50dp"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/exo_progress"
@@ -119,57 +117,80 @@
             app:layout_constraintTop_toTopOf="@+id/exo_progress"
             tool:text="dssdd" />
 
-        <com.google.android.exoplayer2.ui.DefaultTimeBar
-            android:id="@+id/exo_progress"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/exo_slash"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_weight="1"
-            app:buffered_color="@color/white"
-            app:played_color="@color/purple_200"
-            app:scrubber_color="@color/purple_200"
-            app:unplayed_color="@color/white" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:text="/"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/exo_position"
+            app:layout_constraintStart_toEndOf="@id/exo_position"
+            app:layout_constraintTop_toTopOf="@+id/exo_position" />
 
         <TextView
             android:id="@id/exo_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:gravity="right"
-            android:minWidth="50dp"
+            android:layout_marginStart="5dp"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/exo_progress"
-            app:layout_constraintStart_toEndOf="@+id/exo_progress"
-            app:layout_constraintTop_toTopOf="@+id/exo_progress"
+            app:layout_constraintBottom_toBottomOf="@id/exo_slash"
+            app:layout_constraintStart_toEndOf="@id/exo_slash"
+            app:layout_constraintTop_toTopOf="@id/exo_slash"
             tool:text="dssdd" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/exo_go_live"
-            android:layout_width="wrap_content"
+        <com.google.android.exoplayer2.ui.DefaultTimeBar
+            android:id="@+id/exo_progress"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/white"
-            android:gravity="center"
-            android:minWidth="50dp"
-            android:minHeight="25dp"
-            android:minEms="4"
-            android:paddingLeft="15dp"
-            android:paddingTop="6dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="6dp"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/exo_progress"
-            app:layout_constraintStart_toEndOf="@+id/exo_progress"
-            app:layout_constraintTop_toTopOf="@+id/exo_progress"
-            tool:text="dssdd" />
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            app:buffered_color="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/exo_duration"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/exo_fullscreen"
+            app:played_color="@color/purple_200"
+            app:scrubber_color="@color/purple_200"
+            app:unplayed_color="@color/white" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/exo_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fullscreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:id="@+id/exo_go_live"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:background="@color/white"-->
+        <!--            android:gravity="center"-->
+        <!--            android:minWidth="50dp"-->
+        <!--            android:minHeight="25dp"-->
+        <!--            android:minEms="4"-->
+        <!--            android:paddingLeft="15dp"-->
+        <!--            android:paddingTop="6dp"-->
+        <!--            android:paddingRight="15dp"-->
+        <!--            android:paddingBottom="6dp"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="14sp"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@id/exo_progress"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/exo_progress"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/exo_progress"-->
+        <!--            tool:text="dssdd" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

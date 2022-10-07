@@ -1,6 +1,8 @@
 package com.dapascript.customexoplayersample
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private var player: ExoPlayer? = null
+    private var flag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,20 @@ class MainActivity : AppCompatActivity() {
                 exoPlayer.addMediaItem(mediaAudio)
                 exoPlayer.prepare()
             }
+
+        // get id of the controller layout
+        val btnFullScreen = binding.videoView.findViewById<ImageView>(R.id.exo_fullscreen)
+        btnFullScreen.setOnClickListener {
+            if (flag) {
+                btnFullScreen.setImageResource(R.drawable.ic_fullscreen)
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+                flag = false
+            } else {
+                btnFullScreen.setImageResource(R.drawable.ic_fullscreen_exit)
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                flag = true
+            }
+        }
     }
 
     private fun releasePlayer() {
