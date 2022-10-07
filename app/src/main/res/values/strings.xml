@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Custom ExoPlayer Sample</string>
+    <string name="sample">Sample Videos</string>
+</resources>
